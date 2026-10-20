@@ -88,6 +88,14 @@
     }
 
     function showSoloResult() {
+        if (score <= totalQuestions / 2 && window.BossChallenge) {
+            hide(gameScreen);
+            hide(resultScreen);
+            hide(duelRoundScreen);
+            window.BossChallenge.start({ onFinish: resetToStart });
+            return;
+        }
+
         hide(gameScreen);
         hide(duelRoundScreen);
         show(resultScreen);

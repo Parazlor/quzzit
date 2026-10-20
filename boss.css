@@ -1,0 +1,218 @@
+.boss-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: #02030a;
+    color: #ffffff;
+    overflow: hidden;
+    font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+}
+
+.boss-overlay.hidden {
+    display: none !important;
+}
+
+.boss-intro {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: radial-gradient(circle at 50% 42%, #24030d 0%, #02030a 68%);
+}
+
+.boss-intro-text {
+    max-width: 900px;
+    padding: 28px 32px;
+    border: 2px solid rgba(255, 76, 96, 0.85);
+    border-radius: 22px;
+    background: rgba(68, 0, 12, 0.35);
+    box-shadow: inset 0 0 34px rgba(255, 30, 45, 0.28), 0 0 34px rgba(255, 30, 45, 0.22);
+    color: #ffffff;
+    font-size: clamp(1.45rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px #ff1e2d, 0 0 28px #ff1e2d, 0 0 64px rgba(255, 30, 45, 0.7);
+}
+
+.boss-stage {
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+.boss-stage.boss-stage-fade {
+    opacity: 0;
+}
+
+#bossCanvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.boss-hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 18px clamp(14px, 4vw, 40px) 22px;
+    background: linear-gradient(180deg, rgba(2, 3, 10, 0.92) 0%, rgba(2, 3, 10, 0.55) 68%, transparent 100%);
+    pointer-events: none;
+}
+
+.boss-name {
+    color: #ffffff;
+    font-size: clamp(1rem, 2.4vw, 1.5rem);
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px #ff1e2d, 0 0 22px rgba(255, 30, 45, 0.8);
+}
+
+.boss-bar {
+    position: relative;
+    max-width: 700px;
+    height: 22px;
+    margin: 9px auto 0;
+    overflow: hidden;
+    border: 2px solid #ff4b5e;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 16px rgba(255, 30, 45, 0.45);
+}
+
+.boss-bar-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff1e2d, #ffd166);
+    transition: width 0.12s linear;
+}
+
+.boss-bar-fill.phase-2 {
+    background: linear-gradient(90deg, #ff1e2d, #ffffff, #ff1e2d);
+    animation: boss-bar-pulse 0.7s infinite alternate;
+}
+
+@keyframes boss-bar-pulse {
+    from { filter: brightness(0.9); }
+    to { filter: brightness(1.35); }
+}
+
+.boss-shield {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 700px;
+    margin: 6px auto 0;
+}
+
+.boss-shield-label {
+    color: #ff9aa7;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(255, 60, 82, 0.7);
+}
+
+.boss-shield-track {
+    flex: 1;
+    height: 7px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 92, 110, 0.75);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.boss-shield-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff334d, #ff9aa7);
+    box-shadow: 0 0 10px rgba(255, 51, 77, 0.8);
+    transition: width 0.12s linear;
+}
+
+.boss-shield-fill.broken {
+    width: 0 !important;
+    opacity: 0;
+}
+
+.boss-lives {
+    margin-top: 8px;
+    color: #9fe8ff;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(80, 200, 255, 0.65);
+}
+
+.boss-hint {
+    position: absolute;
+    right: 0;
+    bottom: 14px;
+    left: 0;
+    z-index: 2;
+    color: rgba(200, 220, 255, 0.55);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.boss-message {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: #02030a;
+    opacity: 0;
+    font-size: clamp(1.6rem, 5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: 2px;
+    text-align: center;
+    transition: opacity 0.8s ease;
+}
+
+.boss-message.boss-message-visible {
+    opacity: 1;
+}
+
+.boss-message.boss-win {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffd966, 0 0 32px rgba(255, 217, 102, 0.8), 0 0 70px rgba(255, 217, 102, 0.5);
+}
+
+.boss-message.boss-lose {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ff1e2d, 0 0 32px rgba(255, 30, 45, 0.85), 0 0 70px rgba(255, 30, 45, 0.55);
+}
+
+@media (max-width: 600px) {
+    .boss-intro-text {
+        padding: 20px 18px;
+        letter-spacing: 1px;
+    }
+
+    .boss-hint {
+        font-size: 0.72rem;
+    }
+
+    .boss-bar {
+        height: 18px;
+    }
+}

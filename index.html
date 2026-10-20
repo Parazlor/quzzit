@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Насколько хорошо ты меня знаешь? · Викторина</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="boss.css">
 </head>
 <body>
     <div class="quiz-container" id="quizContainer">
@@ -56,7 +57,34 @@
         </div>
     </div>
 
+    <div id="bossOverlay" class="boss-overlay hidden" aria-hidden="true">
+        <div id="bossIntro" class="boss-intro">
+            <div class="boss-intro-text">Выполни это испытание чтобы искупить тебя</div>
+        </div>
+
+        <div id="bossStage" class="boss-stage hidden">
+            <div class="boss-hud">
+                <div class="boss-name">Материнский корабль</div>
+                <div class="boss-bar">
+                    <div class="boss-bar-fill" id="bossBarFill"></div>
+                </div>
+                <div class="boss-shield">
+                    <span class="boss-shield-label">Щит</span>
+                    <div class="boss-shield-track">
+                        <div class="boss-shield-fill" id="bossShieldFill"></div>
+                    </div>
+                </div>
+                <div class="boss-lives" id="bossLives">Жизни: 3</div>
+            </div>
+            <canvas id="bossCanvas"></canvas>
+            <div class="boss-hint">A / D / W / S — движение&nbsp;&nbsp;·&nbsp;&nbsp;Пробел — выстрел</div>
+        </div>
+
+        <div id="bossMessage" class="boss-message hidden"></div>
+    </div>
+
     <script src="questions.js"></script>
+    <script src="boss.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
