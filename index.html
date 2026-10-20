@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Насколько хорошо ты меня знаешь? · Викторина</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container" id="quizContainer">
+        <!-- Верхняя панель: счёт виден ТОЛЬКО в соло. В дуэли вместо него - "Счёт скрыт" -->
+        <div class="top-panel" id="topPanel">
+            <div class="score-badge" id="scoreDisplay">0</div>
+            <div class="question-counter" id="counterDisplay">1 / 5</div>
+        </div>
+
+        <!-- Стартовый экран -->
+        <div id="startScreen" class="start-screen">
+            <div class="start-title">🎉 Насколько хорошо ты меня знаешь?</div>
+            <button class="mode-btn mode-solo" id="soloModeBtn">👤 Обычный режим (один игрок)</button>
+            <button class="mode-btn mode-duel" id="duelModeBtn">⚔️ Дуэль (играем вдвоём)</button>
+        </div>
+
+        <!-- Игровой экран -->
+        <div id="gameScreen" class="hidden">
+            <div id="duelTurnBanner" class="turn-banner hidden"></div>
+            <div class="question-text" id="questionText"></div>
+            <div class="answers-grid" id="answersGrid"></div>
+        </div>
+
+        <!-- Промежуточный экран дуэли (здесь показывается счёт) -->
+        <div id="duelRoundScreen" class="duel-round-screen hidden">
+            <div class="duel-round-title" id="duelRoundTitle">Итоги раунда</div>
+            <div class="duel-round-sub" id="duelRoundQuestion"></div>
+            <div class="duel-round-cards">
+                <div class="duel-round-card" id="duelRoundCardP1">
+                    <div class="player-name">Игрок 1</div>
+                    <div class="answer-given" id="duelRoundAnswerP1"></div>
+                    <div class="verdict" id="duelRoundVerdictP1"></div>
+                </div>
+                <div class="duel-round-card" id="duelRoundCardP2">
+                    <div class="player-name">Игрок 2</div>
+                    <div class="answer-given" id="duelRoundAnswerP2"></div>
+                    <div class="verdict" id="duelRoundVerdictP2"></div>
+                </div>
+            </div>
+            <div class="duel-total-line" id="duelTotalLine"></div>
+            <button class="continue-btn" id="duelContinueBtn">➡️ Дальше</button>
+        </div>
+
+        <!-- Экран результатов -->
+        <div id="resultScreen" class="result-screen hidden">
+            <div class="result-score" id="finalScore"></div>
+            <div class="result-message" id="resultMessage"></div>
+            <button class="restart-btn" id="restartBtn">🔄 Пройти снова</button>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
