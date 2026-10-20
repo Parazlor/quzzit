@@ -18,3 +18,9 @@ Static browser quiz. No build step, package manager, tests, lint, or formatter.
 ## Verify
 - No automated checks. Open `index.html` and manually play both modes: counters, solo result, duel round summary, and final score.
 - Pushing to `main` auto-deploys `https://parazlor.github.io/quzzit/` via GitHub Pages (source: `main`, root). Allow 1–2 minutes after pushing.
+
+## rules
+
+- делать чистый код без мешанины HTML + CSS + JavaScript
+- нужно чтобы index.html открывался в браузере
+- никаких эмоджи
